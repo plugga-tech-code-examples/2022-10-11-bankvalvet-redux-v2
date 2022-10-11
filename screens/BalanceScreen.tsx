@@ -2,8 +2,8 @@ import { StyleSheet, Text, View } from "react-native";
 import { useAppSelector } from "../store/store";
 
 export default function Balance() {
-  const balance = useAppSelector((state) => state.balance);
-  const transactions = useAppSelector((state) => state.transactions);
+  const balance = useAppSelector((state) => state.bank.balance);
+  const transactions = useAppSelector((state) => state.bank.transactions);
 
   return (
     <View style={styles.container}>
