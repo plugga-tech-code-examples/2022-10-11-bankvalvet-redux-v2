@@ -10,8 +10,8 @@ const rootReducer = combineReducers({
 export const store = createStore(rootReducer);
 
 // Make sure we use strong typings when working with our store
-type AppState = ReturnType<typeof store.getState>;
-type AppDispatch = typeof store.dispatch;
+export type AppState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
 
 // Wrap build in hooks with our typings
 export const useAppDispatch: () => AppDispatch = useDispatch;

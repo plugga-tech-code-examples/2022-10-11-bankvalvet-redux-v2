@@ -1,9 +1,10 @@
 import { StyleSheet, Text, View } from "react-native";
+import { selectBalance, selectTranscations } from "../store/bankSelectors";
 import { useAppSelector } from "../store/store";
 
 export default function Balance() {
-  const balance = useAppSelector((state) => state.bank.balance);
-  const transactions = useAppSelector((state) => state.bank.transactions);
+  const balance = useAppSelector(selectBalance);
+  const transactions = useAppSelector(selectTranscations);
 
   return (
     <View style={styles.container}>
