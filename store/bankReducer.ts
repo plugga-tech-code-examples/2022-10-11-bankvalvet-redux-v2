@@ -3,7 +3,7 @@ interface BankState {
 }
 
 const initialState: BankState = {
-  balance: 0,
+  balance: 100,
 };
 
 interface WithdrawalAction {
@@ -18,5 +18,12 @@ interface DepositAction {
 type KnownAction = WithdrawalAction | DepositAction;
 
 export function bankReducer(state = initialState, action: KnownAction): BankState {
-  return state;
+  switch (action.type) {
+    case "bank/withdrawal":
+      return { ...state, balance: state.balance - action.payload };
+    case "bank/deposit":
+      return { ...state, balance: state.balance + action.payload };
+    default:
+      return state;
+  }
 }
