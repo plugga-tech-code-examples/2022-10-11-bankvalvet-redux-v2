@@ -1,11 +1,12 @@
 import { StyleSheet, Text, View } from "react-native";
 import { selectBalance, selectTranscations } from "../store/bank";
+import { selectProfile } from "../store/profile/profileSelectors";
 import { useAppSelector } from "../store/store";
 
 export default function Balance() {
   const balance = useAppSelector(selectBalance);
   const transactions = useAppSelector(selectTranscations);
-  const { name, savingsGoal } = useAppSelector((state) => state.profile);
+  const { name, savingsGoal } = useAppSelector(selectProfile);
 
   return (
     <View style={styles.container}>
