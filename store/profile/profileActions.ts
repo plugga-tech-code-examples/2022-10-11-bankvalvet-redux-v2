@@ -10,6 +10,8 @@ export interface SetSavingGoalAction {
   payload: number;
 }
 
+export type ProfileAction = SetNameAction | SetSavingGoalAction;
+
 /** Thunk Action creator */
 export function setProfileName(name: string): AppThunkAction {
   /** Redux Thunk'en (dvs en funktion och inte ett objekt) */

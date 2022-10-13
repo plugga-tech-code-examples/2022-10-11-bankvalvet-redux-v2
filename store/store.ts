@@ -1,7 +1,9 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
-import { AnyAction, applyMiddleware, combineReducers, createStore } from "redux";
+import { applyMiddleware, combineReducers, createStore } from "redux";
 import thunk, { ThunkAction, ThunkDispatch } from "redux-thunk";
+import { BankAction } from "./bank/bankActions";
 import { bankReducer } from "./bank/bankReducer";
+import { ProfileAction } from "./profile/profileActions";
 import { profileReducer } from "./profile/profileReducer";
 
 const rootReducer = combineReducers({
@@ -13,12 +15,13 @@ const thunkMiddleware = applyMiddleware<AppThunkDispatch>(thunk);
 export const store = createStore(rootReducer, thunkMiddleware);
 
 // Types to use with our thunks
-export type AppThunkDispatch = ThunkDispatch<AppState, unknown, AnyAction>;
+type KnownAction = BankAction | ProfileAction;
+export type AppThunkDispatch = ThunkDispatch<AppState, unknown, KnownAction>;
 export type AppThunkAction<ReturnType = void> = ThunkAction<
   ReturnType,
   AppState,
   unknown,
-  AnyAction
+  KnownAction
 >;
 
 // Make sure we use strong typings when working with our store

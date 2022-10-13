@@ -1,7 +1,7 @@
-import { SetNameAction, SetSavingGoalAction } from "./profileActions";
+import { ProfileAction } from "./profileActions";
 import { initialState, ProfileState } from "./profileState";
 
-type KnownAction = SetNameAction | SetSavingGoalAction;
+type KnownAction = ProfileAction;
 
 export function profileReducer(state = initialState, action: KnownAction): ProfileState {
   switch (action.type) {

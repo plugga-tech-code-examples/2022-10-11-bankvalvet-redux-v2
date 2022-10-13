@@ -1,23 +1,7 @@
-interface BankState {
-  balance: number;
-  transactions: number[];
-}
+import { BankAction } from "./bankActions";
+import { BankState, initialState } from "./bankState";
 
-const initialState: BankState = {
-  balance: 0,
-  transactions: [],
-};
-
-interface WithdrawalAction {
-  type: "bank/withdrawal";
-  payload: number;
-}
-interface DepositAction {
-  type: "bank/deposit";
-  payload: number;
-}
-
-type KnownAction = WithdrawalAction | DepositAction;
+type KnownAction = BankAction;
 
 export function bankReducer(state = initialState, action: KnownAction): BankState {
   switch (action.type) {
