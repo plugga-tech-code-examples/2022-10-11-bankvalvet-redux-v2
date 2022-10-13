@@ -4,6 +4,6 @@ export interface ProfileState {
 }
 
 export const initialState: ProfileState = {
-  name: "",
-  savingsGoal: 0,
+  name: "David",
+  savingsGoal: 2000,
 };
