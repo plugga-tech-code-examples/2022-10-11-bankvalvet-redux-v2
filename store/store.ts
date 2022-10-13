@@ -1,10 +1,11 @@
 import { TypedUseSelectorHook, useDispatch, useSelector } from "react-redux";
 import { combineReducers, createStore } from "redux";
-import { bankReducer } from "./bankReducer";
+import { bankReducer } from "./bank/bankReducer";
+import { profileReducer } from "./profile/profileReducer";
 
 const rootReducer = combineReducers({
   bank: bankReducer,
-  // profile: profileReducer,
+  profile: profileReducer,
 });
 
 export const store = createStore(rootReducer);

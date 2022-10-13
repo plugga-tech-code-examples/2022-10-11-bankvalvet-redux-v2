@@ -1,4 +1,4 @@
-import { AppState } from "./store";
+import { AppState } from "../store";
 
 export const selectBank = (state: AppState) => state.bank;
 export const selectBalance = (state: AppState) => selectBank(state).balance;

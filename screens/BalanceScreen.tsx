@@ -1,5 +1,5 @@
 import { StyleSheet, Text, View } from "react-native";
-import { selectBalance, selectTranscations } from "../store/bankSelectors";
+import { selectBalance, selectTranscations } from "../store/bank";
 import { useAppSelector } from "../store/store";
 
 export default function Balance() {
