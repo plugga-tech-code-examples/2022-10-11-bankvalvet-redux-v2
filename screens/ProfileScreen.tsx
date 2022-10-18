@@ -1,20 +1,18 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { Button, StyleSheet, Text, TextInput, View } from "react-native";
-import { useSelector } from "react-redux";
-import { setProfileName } from "../store/profile/profileActions";
-import { selectProfile } from "../store/profile/profileSelectors";
-import { useAppDispatch } from "../store/store";
+import { setName } from "../store/profileSlice";
+import { useAppDispatch, useAppSelector } from "../store/store";
 
 export default function Profile() {
-  const profile = useSelector(selectProfile);
-  const [name, setName] = useState(profile.name);
+  const profile = useAppSelector((state) => state.profile);
+  const [name, setLocalName] = useState(profile.name);
   const dispatch = useAppDispatch();
 
   return (
     <View style={styles.container}>
       <Text>Profile</Text>
-      <TextInput value={name} onChangeText={setName} style={{ width: 200 }} />
-      <Button title="Spara ditt namn" onPress={() => dispatch(setProfileName(name))} />
+      <TextInput value={name} onChangeText={setLocalName} style={{ width: 200 }} />
+      <Button title="Spara ditt namn" onPress={() => dispatch(setName(name))} />
     </View>
   );
 }
