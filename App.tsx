@@ -1,17 +1,30 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import { useEffect } from "react";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import { Provider as ReduxProvider } from "react-redux";
 import RootNavigator from "./navigation/RootNavigator";
-import { store } from "./store/store";
+import { listenToBankChanges } from "./store/bankSlice";
+import { store, useAppDispatch } from "./store/store";
 
-export default function App() {
+function App() {
+  const dispath = useAppDispatch();
+
+  useEffect(() => {
+    dispath(listenToBankChanges());
+  }, []);
+
+  return (
+    <SafeAreaProvider>
+      <StatusBar style="auto" />
+      <RootNavigator />
+    </SafeAreaProvider>
+  );
+}
+
+export default function AppWrapper() {
   return (
     <ReduxProvider store={store}>
-      <SafeAreaProvider>
-        <StatusBar style="auto" />
-        <RootNavigator />
-      </SafeAreaProvider>
+      <App />
     </ReduxProvider>
   );
 }
