@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { storeTransactions } from "../firebaseConfig";
 import { setName } from "../store/profileSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
 
@@ -7,6 +9,10 @@ export default function Balance() {
   const balance = useAppSelector((state) => state.bank.balance);
   const transactions = useAppSelector((state) => state.bank.transactions);
   const profile = useAppSelector((state) => state.profile);
+
+  useEffect(() => {
+    storeTransactions(transactions);
+  }, [transactions]);
 
   return (
     <View style={styles.container}>
