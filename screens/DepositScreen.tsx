@@ -1,5 +1,5 @@
-import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
+import { deposit } from "../store/bankSlice";
 import { useAppDispatch } from "../store/store";
 
 export default function Deposit() {
@@ -8,10 +8,7 @@ export default function Deposit() {
   return (
     <View style={styles.container}>
       <Text>Deposit</Text>
-      <Button
-        title="Sätt in pengar"
-        onPress={() => dispatch({ type: "bank/deposit", payload: 500 })}
-      />
+      <Button title="Sätt in 500kr" onPress={() => dispatch(deposit(500))} />
     </View>
   );
 }
