@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { deposit } from "../store/bankSlice";
 import { useAppDispatch } from "../store/store";

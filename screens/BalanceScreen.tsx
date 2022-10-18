@@ -1,4 +1,3 @@
-import React from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
 import { setName } from "../store/profileSlice";
 import { useAppDispatch, useAppSelector } from "../store/store";
