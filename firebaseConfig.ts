@@ -17,10 +17,21 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 
-import { getDatabase, ref, set } from "firebase/database";
+import { getDatabase, onValue, ref, set } from "firebase/database";
 
 export function storeTransactions(transactions: number[]) {
   const db = getDatabase(app);
   const reference = ref(db, "bank/transactions");
+
   set(reference, transactions);
+}
+
+export function setupTransactionsListener() {
+  const db = getDatabase(app);
+  const reference = ref(db, "bank/transactions");
+
+  onValue(reference, (snapshot) => {
+    const transaction = snapshot.val() as number[];
+    console.log("Transactions" + transaction);
+  });
 }
