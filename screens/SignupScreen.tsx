@@ -11,7 +11,7 @@ export default function Signup() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.margin}>Signup</Text>
+      <Text style={styles.margin}>Signup!!!!!!!!</Text>
       <TextInput
         placeholder="Username"
         value={username}
